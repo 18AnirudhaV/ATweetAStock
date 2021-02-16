@@ -1,16 +1,36 @@
-#random forest
-#knn
-
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsRegressor
 
-df = pd.read_csv("stock_and_sent.csv")
+df = pd.read_csv("tslaFinData.csv")
+df.dropna(
+    axis=0,
+    how='any',
+    thresh=None,
+    subset=None,
+    inplace=True
+)
 
 train, test = train_test_split(df, test_size=0.3)
-x_columns = ["Open", "High", "Low", "Volume", "Likes", "Retweets", "Positive", "Neutral", "Negative", "Composite"]
-y_column = ["Close"]
+x_columns = ['high',
+             'low',
+             'average',
+             'volume',
+             'notional',
+             'numberOfTrades',
+             'marketHigh',
+             'marketLow',
+             'marketAverage',
+             'marketVolume',
+             'marketNotional',
+             'marketNumberOfTrades',
+             'open',
+             'marketOpen',
+             'marketClose',
+             'changeOverTime',
+             'marketChangeOverTime']
 
+y_column = ["close"]
 
 # Create the knn model.
 # Look at the five closest neighbors.
