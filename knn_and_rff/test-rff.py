@@ -1,15 +1,9 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor
+from sklearn.metrics import accuracy_score
 
-df = pd.read_csv("tslaFinData.csv")
-df.dropna(
-    axis=0,
-    how='any',
-    thresh=None,
-    subset=None,
-    inplace=True
-)
+df = pd.read_csv("tslaMerge.csv")
 
 train, test = train_test_split(df, test_size=0.3)
 x_columns = ['high',
@@ -18,31 +12,25 @@ x_columns = ['high',
              'volume',
              'notional',
              'numberOfTrades',
-             'marketHigh',
-             'marketLow',
-             'marketAverage',
-             'marketVolume',
-             'marketNotional',
-             'marketNumberOfTrades',
              'open',
-             'marketOpen',
-             'marketClose',
              'changeOverTime',
-             'marketChangeOverTime']
+             'likes',
+             'retweets',
+             'neutral',
+             'negative',
+             'positive',
+             'composite']
 
 y_column = ["close"]
 
 
-# Create the knn model.
-# Look at the five closest neighbors.
-
+# Create the rff model.
 rff = RandomForestRegressor()
 # Fit the model on the training data.
 rff.fit(train[x_columns], train[y_column].values.ravel())
 # Make point predictions on the test set using the fit model.
 predictions = rff.predict(test[x_columns])
-predictions = predictions.reshape(2796, 1)
-
+predictions = predictions.reshape(1738, 1)
 # Get the actual values for the test set.
 actual = test[y_column]
 

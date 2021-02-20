@@ -1,15 +1,9 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsRegressor
+from sklearn.metrics import accuracy_score
 
-df = pd.read_csv("tslaFinData.csv")
-df.dropna(
-    axis=0,
-    how='any',
-    thresh=None,
-    subset=None,
-    inplace=True
-)
+df = pd.read_csv("tslaMerge.csv")
 
 train, test = train_test_split(df, test_size=0.3)
 x_columns = ['high',
@@ -18,29 +12,23 @@ x_columns = ['high',
              'volume',
              'notional',
              'numberOfTrades',
-             'marketHigh',
-             'marketLow',
-             'marketAverage',
-             'marketVolume',
-             'marketNotional',
-             'marketNumberOfTrades',
              'open',
-             'marketOpen',
-             'marketClose',
              'changeOverTime',
-             'marketChangeOverTime']
+             'likes',
+             'retweets',
+             'neutral',
+             'negative',
+             'positive',
+             'composite']
 
 y_column = ["close"]
 
 # Create the knn model.
-# Look at the five closest neighbors.
-
 knn = KNeighborsRegressor()
 # Fit the model on the training data.
 knn.fit(train[x_columns], train[y_column])
 # Make point predictions on the test set using the fit model.
 predictions = knn.predict(test[x_columns])
-
 # Get the actual values for the test set.
 actual = test[y_column]
 
