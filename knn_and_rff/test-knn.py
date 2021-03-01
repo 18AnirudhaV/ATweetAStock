@@ -1,19 +1,14 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsRegressor
-from sklearn.metrics import accuracy_score
 
 df = pd.read_csv("tslaMerge.csv")
 
 train, test = train_test_split(df, test_size=0.3)
-x_columns = ['high',
-             'low',
-             'average',
-             'volume',
+x_columns = ['volume',
              'notional',
              'numberOfTrades',
              'open',
-             'changeOverTime',
              'likes',
              'retweets',
              'neutral',
