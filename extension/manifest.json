@@ -1,0 +1,27 @@
+{
+  "manifest_version": 2,
+  "name": "A Tweet A Stock",
+  "version": "0.1",
+  "author": "Mustafa Tariq",
+  "description": "Get the social sentiment of any stock!",
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "content.js"
+      ]
+    }
+  ],
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "browser_action": {
+    "default_icon": "logo.png",
+    "default_popup": "index.html",
+    "default_title": "We analyze thousands of live tweets per hour are analyzed using our algorithm to predict the general mood and opinion surrounding a public company."
+  }
+}
