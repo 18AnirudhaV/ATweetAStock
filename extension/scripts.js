@@ -1,15 +1,10 @@
 // Handles your frontend UI logic.
-const pos = "👍";
-const neg = "👎";
-const neu = "🤷";
 
-var input = window.prompt("");
+var input = prompt();
 if (input == "pos") {
-    document.body.innerHTML = document.body.innerHTML.replace('emoji', pos);
+    document.getElementById("id01").innerHTML = "Social Sentiment: 👍";
 } else if (input == "neg") {
-    document.body.innerHTML = document.body.innerHTML.replace('emoji', neg);
+    document.getElementById("id01").innerHTML = "Social Sentiment: 👎";
 } else {
-    document.body.innerHTML = document.body.innerHTML.replace('emoji', neu);
+    document.getElementById("id01").innerHTML = "Social Sentiment: 🤷";
 }
-
-
