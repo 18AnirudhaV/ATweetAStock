@@ -1,10 +1,11 @@
 // Handles your frontend UI logic.
 
-var input = prompt();
-if (input == "pos") {
-    document.getElementById("id01").innerHTML = "Social Sentiment: 👍";
-} else if (input == "neg") {
-    document.getElementById("id01").innerHTML = "Social Sentiment: 👎";
-} else {
+function neu() {
     document.getElementById("id01").innerHTML = "Social Sentiment: 🤷";
+}
+function pos() {
+    document.getElementById("id01").innerHTML = "Social Sentiment: 👍";
+}
+function neg() {
+    document.getElementById("id01").innerHTML = "Social Sentiment: 👎";
 }
